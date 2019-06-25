@@ -17,7 +17,7 @@
 	</properties>
 
 	<dependencies>
-		<!-- spring framework -->
+	<!-- spring framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -118,8 +118,6 @@
 			<artifactId> taglibs-standard-impl </artifactId>
 			<version> 1.2.3 </version>
 		</dependency>
-
-
 
 	</dependencies>
 	<build>

@@ -1,13 +1,12 @@
 package com.creativa.entities;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -18,19 +17,22 @@ public class Telefono {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
 	@GenericGenerator(name = "native", strategy = "native")
-	
+
 	@Column(name = "Id")
 	private int id;
-	
-	@Column(name ="NumeroTel")
+
+	@Column(name = "NumeroTel")
 	private String numeroTel;
-	
-	 @OneToMany(mappedBy="telefono")
-	    private Set<Cliente> cliente;
-	
+    
+	@ManyToOne
+	@JoinColumn(name="idCliente", nullable = false)
+	private Cliente cliente;
+    
+	//constructor
 	public Telefono() {
 	}
-
+    
+	//getters & setters
 	public int getId() {
 		return id;
 	}
@@ -46,7 +48,13 @@ public class Telefono {
 	public void setNumeroTel(String numeroTel) {
 		this.numeroTel = numeroTel;
 	}
-	
-	
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}	
 	
 }

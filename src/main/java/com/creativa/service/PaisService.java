@@ -13,11 +13,13 @@ public class PaisService {
 	
 	@Autowired
 	 PaisDao daoP;
-
+    
+	//lista pais service
 	public  List<Pais> listarPais() {
 		return daoP.listarPais();
 	}
-
+    
+	//crear pais service
 	public void AddPais(Pais p) {
 		daoP.AddPais(p);
 	}

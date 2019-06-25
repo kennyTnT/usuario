@@ -10,15 +10,17 @@ import com.creativa.entities.Pais;
 @Repository
 @Transactional
 public class PaisDao {
+	// lista paises
 	public List<Pais> listarPais() {
 		try (Session session = HibernateConfigCliente.getSessionFactoryCliente().openSession()) {
 			return session.createQuery("FROM Pais", Pais.class).list();
 		}
 	}
 
+	// agregar pais
 	public void AddPais(Pais p) {
-		try (Session session = HibernateConfigCliente.getSessionFactoryCliente().openSession()){
-			 session.save(p);
+		try (Session session = HibernateConfigCliente.getSessionFactoryCliente().openSession()) {
+			session.save(p);
 		} catch (Exception e) {
 			System.err.println("Error: " + e.getMessage());
 		}

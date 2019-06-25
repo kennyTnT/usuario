@@ -1,12 +1,12 @@
 package com.creativa.entities;
 
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -24,14 +24,14 @@ public class Pais {
 	@Column(name ="Nombre")
 	private String nombre;
 	
-	@ManyToOne
-	@JoinColumn(name = "IdPais", nullable = false)
-	private Ciudad ciudad;
+	@OneToMany(mappedBy="pais")
+	private Set<Ciudad> cuidad;
 	
-	public Pais() {
-		
+	//constructor
+	public Pais() {	
 	}
-
+    
+	//getters & setters
 	public int getId() {
 		return id;
 	}
@@ -48,14 +48,12 @@ public class Pais {
 		this.nombre = nombre;
 	}
 
-	public Ciudad getCiudad() {
-		return ciudad;
+	public Set<Ciudad> getCuidad() {
+		return cuidad;
 	}
 
-	public void setCiudad(Ciudad ciudad) {
-		this.ciudad = ciudad;
+	public void setCuidad(Set<Ciudad> cuidad) {
+		this.cuidad = cuidad;
 	}
-
-
 	
 }

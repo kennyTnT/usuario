@@ -13,11 +13,13 @@ public class CiudadService {
 
 	@Autowired
 	 CiudadDao daoCi;
-
+    
+	//lista ciudad service
 	public  List<Ciudad> listarCiudad() {
 		return daoCi.listarCiudad();
 	}
-
+    
+	//crear ciudad service
 	public void AddCuidad(Ciudad ci) {
 		daoCi.AddCiudad(ci);
 	}

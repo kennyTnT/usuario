@@ -2,7 +2,6 @@ package com.creativa.entities;
 
 import java.sql.Date;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,8 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.GenericGenerator;
+
 
 @Entity
 @Table(name = "cliente")
@@ -24,27 +23,31 @@ public class Cliente {
 
 	@Column(name = "Id")
 	private int id;
-	
+
 	@Column(name = "Nombre")
 	private String nombre;
-	
-	
+
+	@Column(name = "Apellido")
+	private String apellido;
+
 	@Column(name = "FechaNac")
 	private Date fechaNac;
-	
+
 	@Column(name = "Direccion")
 	private String direccion;
-	
-	 @OneToMany(mappedBy="cliente")
-	    private Set<Ciudad> cuidad;
-	
-	 @ManyToOne
-		@JoinColumn(name = "idCliente", nullable = false)
-		private Cliente cliente;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "IdCiudad", nullable = false)
+	private Ciudad ciudad;
+
+	@OneToMany(mappedBy = "cliente")
+	private Set<Telefono> telefono;
+    
+	//constructor
 	public Cliente() {
 	}
-
+     
+	//getters & setters
 	public int getId() {
 		return id;
 	}
@@ -59,6 +62,14 @@ public class Cliente {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 
 	public Date getFechaNac() {
@@ -77,13 +88,20 @@ public class Cliente {
 		this.direccion = direccion;
 	}
 
-	public Set<Ciudad> getCuidad() {
-		return cuidad;
+	public Ciudad getCiudad() {
+		return ciudad;
 	}
 
-	public void setCuidad(Set<Ciudad> cuidad) {
-		this.cuidad = cuidad;
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
 	}
-	
-	
+
+	public Set<Telefono> getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(Set<Telefono> telefono) {
+		this.telefono = telefono;
+	}
+
 }

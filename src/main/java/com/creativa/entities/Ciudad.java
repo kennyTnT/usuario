@@ -1,7 +1,6 @@
 package com.creativa.entities;
 
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +14,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "ciudad")
+@Table(name = "cuidad")
 public class Ciudad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -28,17 +27,17 @@ public class Ciudad {
 	private String nombre;
 
 	@ManyToOne
-	@JoinColumn(name = "IdCiudad", nullable = false)
-	private Cliente cliente;
+	@JoinColumn(name="idPais" , nullable = false)
+	private Pais pais;
 	
-	 @OneToMany(mappedBy="cuidad")
-	    private Set<Pais> pais;
-	
-
+	@OneToMany(mappedBy = "ciudad")
+	private Set<Cliente> cliente;
+    
+	//constructor
 	public Ciudad() {
-
 	}
-
+    
+	//getters & setters
 	public int getId() {
 		return id;
 	}
@@ -55,21 +54,20 @@ public class Ciudad {
 		this.nombre = nombre;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public Set<Pais> getPais() {
+	public Pais getPais() {
 		return pais;
 	}
 
-	public void setPais(Set<Pais> pais) {
+	public void setPais(Pais pais) {
 		this.pais = pais;
 	}
-	
- 
+
+	public Set<Cliente> getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Set<Cliente> cliente) {
+		this.cliente = cliente;
+	}
+
 }
